@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB ON 03/07</title>
+</head>
+
+<body>
+    <header>
+        <h1>Employee</h1>
+    </header>
+        <main>
+            <section>
+                <h2>List of Employees</h2>
+                <ul id="employee-list"></ul>
+            </section>
+            
+            <section id="search">
+                <h2>Search and View Employees</h2>
+                <input type="text" placeholder="Search by first name" />
+                <button>Search</button>
+                <section id="info_of_emp"></section>
+                <section id="edit-employee">
+                    <h2>Edit Employee</h2>
+                    <form>
+                        <label for="edit-first-name">First Name:</label>
+                        <input type="text" id="edit-first-name" name="edit-first-name" required />
+                        <label for="edit-last-name">Last Name:</label>
+                        <input type="text" id="edit-last-name" name="edit-last-name" required />
+                        <label for="edit-age">Age:</label>
+                        <input type="number" id="edit-age" name="edit-age" required />
+                        <label for="edit-married">Married:</label>
+                        <input type="checkbox" id="edit-married" name="edit-married" />
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </section>
+                <section id="add-employee">
+                    <h2>Add Employee</h2>
+                    <form>
+                        <label for="first-name">First Name:</label>
+                        <input type="text" id="first-name" name="first-name" required />
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" name="last-name" required />
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required />
+                        <label for="married">Married:</label>
+                        <input type="checkbox" id="married" name="married" />
+                        <button type="submit">Add Employee</button>
+                    </form>
+                </section>
+        </main>
+
+        <script src="./app.js"></script>
+</body>
+
+</html>
