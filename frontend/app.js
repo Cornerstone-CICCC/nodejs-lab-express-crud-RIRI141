@@ -99,7 +99,9 @@ const searchEmployee = async (fn) => {
 
 const viewEmployee = (emp) => {
   const viewSection = document.querySelector("#info_of_emp");
-  emp.forEach((emp) => {
+  const employees = Array.isArray(emp) ? emp : [emp];
+
+  employees.forEach((emp) => {
     const empInfo = document.createElement("div");
     empInfo.innerHTML = `
       <p>First Name: ${emp.firstname}</p>
@@ -137,17 +139,17 @@ const handleView = async (id) => {
 const handleEdit = async (id) => {
   const employee = await getEmployeeByID(id);
 
-  document.getElementById("edit-first-name").value = employee.firstname;
-  document.getElementById("edit-last-name").value = employee.lastname;
-  document.getElementById("edit-age").value = employee.age;
-  document.getElementById("edit-married").checked = employee.isMarried;
+  document.querySelector("#edit-first-name").value = employee.firstname;
+  document.querySelector("#edit-last-name").value = employee.lastname;
+  document.querySelector("#edit-age").value = employee.age;
+  document.querySelector("#edit-married").checked = employee.isMarried;
 
   document
     .querySelector("#edit-employee form")
     .setAttribute("data-employee-id", employee.id);
 
   document
-    .getElementById("edit-employee")
+    .querySelector("#edit-employee")
     .scrollIntoView({ behavior: "smooth" });
 };
 const handleDelete = async (id) => {
@@ -168,10 +170,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.querySelector("#add-employee form").onsubmit = async (event) => {
     event.preventDefault();
-    const firstname = document.getElementById("first-name").value;
-    const lastname = document.getElementById("last-name").value;
-    const age = parseInt(document.getElementById("age").value, 10);
-    const isMarried = document.getElementById("married").checked;
+    const firstname = document.querySelector("#first-name").value;
+    const lastname = document.querySelector("#last-name").value;
+    const age = parseInt(document.querySelector("#age").value, 10);
+    const isMarried = document.querySelector("#married").checked;
 
     await addEmployee(firstname, lastname, age, isMarried);
     event.target.reset();
@@ -183,10 +185,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector("#edit-employee form").onsubmit = async (event) => {
     event.preventDefault();
     const id = event.target.getAttribute("data-employee-id");
-    const firstname = document.getElementById("edit-first-name").value;
-    const lastname = document.getElementById("edit-last-name").value;
-    const age = parseInt(document.getElementById("edit-age").value, 10);
-    const isMarried = document.getElementById("edit-married").checked;
+    const firstname = document.querySelector("#edit-first-name").value;
+    const lastname = document.querySelector("#edit-last-name").value;
+    const age = parseInt(document.querySelector("#edit-age").value, 10);
+    const isMarried = document.querySelector("#edit-married").checked;
 
     await updateEmployee(id, firstname, lastname, age, isMarried);
     const employees = await getEmployees();
